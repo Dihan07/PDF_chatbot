@@ -10,6 +10,17 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
+import streamlit.components.v1 as components
+
+# Auto-refresh every 25 minutes to prevent sleeping
+components.html("""
+<script>
+    setTimeout(function() {
+        window.parent.location.reload();
+    }, 1500000);
+</script>
+""", height=0)
+
 
 load_dotenv()
 os.getenv("GOOGLE_API_KEY")
